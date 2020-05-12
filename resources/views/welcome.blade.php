@@ -169,7 +169,7 @@
                 <div class="products-tabs">
                     <!-- tab -->
                     <div id="tab1" class="tab-pane active">
-                        <div class="products-slick carousel-inner" data-nav="#slick-nav-1">
+                        <div class="products-slick" data-nav="#slick-nav-1">
                             <!-- product -->
                             <div class="product carousel-item active">
                                 <div class="product-img">
@@ -190,7 +190,7 @@
                             <!-- /product -->
 
                             <!-- product -->
-                            <div class="product carousel-item">
+                            <div class="product ">
                                 <div class="product-img">
                                     <img src="https://www.itgaleri.com/wp-content/uploads/2019/07/Asus-ROG-Strix-G531GD-2.jpg" alt="" width="300" height="300">
                                     <div class="product-label">
@@ -209,7 +209,7 @@
                             <!-- /product -->
 
                             <!-- product -->
-                            <div class="product carousel-item">
+                            <div class="product">
                                 <div class="product-img">
                                     <img src="https://www.itgaleri.com/wp-content/uploads/2019/07/Asus-ROG-Strix-G531GD-2.jpg" alt="" width="300" height="300">
                                     <div class="product-label">
@@ -228,7 +228,7 @@
                             <!-- /product -->
 
                             <!-- product -->
-                            <div class="product carousel-item">
+                            <div class="product">
                                 <div class="product-img">
                                     <img src="https://www.itgaleri.com/wp-content/uploads/2019/07/Asus-ROG-Strix-G531GD-2.jpg" alt="" width="300" height="300">
                                     <div class="product-label">
