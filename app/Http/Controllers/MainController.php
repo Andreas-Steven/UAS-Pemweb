@@ -31,10 +31,9 @@ class MainController extends Controller
         return view('Auth/Register');
     }
 
-    public function AdminView()
+    public function HistoryView()
     {
-        $ProductModel = DB::table('products')->get();
-        return view('Admin/Admin-Tables', ['product' => $ProductModel]);
+        return view('Admin/Transaction/History');
     }
 
     /**
@@ -106,11 +105,13 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductModel $product) // https://stackoverflow.com/questions/35402228/write-custom-query-in-laravel-5
+    public function destroy($id) // https://stackoverflow.com/questions/35402228/write-custom-query-in-laravel-5
     {
-        DB::table('products')->where('ID', '=', $product->IDphp )->delete();
-        DB::statement('ALTER TABLE `products` AUTO_INCREMENT = 0');
-        
+        //DB::table('products')->where('ID', '=', $product->IDphp )->delete();
+        //DB::statement('ALTER TABLE `products` AUTO_INCREMENT = 0');
+
+        $song = ProductModel::where('ID', $id)->delete();
+
         return redirect('/admin');
 
         // SOFT DELETE GAK BISA -_-

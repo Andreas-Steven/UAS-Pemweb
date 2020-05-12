@@ -6,7 +6,7 @@
 		<div style="border-bottom: 1px solid black;">
 			<p style="text-align: center;"> 
 				<font size="7" color="black"> Ubah Data Produk </font>
-			<a href="{{ url('/') }}" style="float:right;margin-right: 15px;margin-top: 35px;">
+			<a href="{{ url('/admin') }}" style="float:right;margin-right: 15px;margin-top: 35px;">
 				<button class="btn btn-primary"> 
 					<span class="glyphicon glyphicon-menu-left"></span>
 					Back

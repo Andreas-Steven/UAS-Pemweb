@@ -26,10 +26,12 @@ Route::get('/', 'MainController@index');
 Route::get('/Add', 'MainController@create');
 Route::any('/Login', 'MainController@LoginView');
 Route::any('/Register', 'MainController@RegisterView');
+Route::any('/History', 'MainController@HistoryView')->name('history')->middleware('auth');
+Route::any('/User', 'UserController@index')->name('user')->middleware('auth');
 
 Route::post('/AddProduct', 'MainController@store');
 Route::get('/{product}/Edit', 'MainController@edit');
-Route::delete('/{product}', 'MainController@destroy');
+Route::delete('/Delete/{product}', 'MainController@destroy');
 Route::patch('/Update/{products}', 'MainController@update');
 
 Route::get('/register','AuthController@getRegister')->name('register')->middleware('guest');
@@ -44,6 +46,10 @@ Route::get('/home', function(){
 Route::get('/logout','AuthController@logout')->middleware('auth')->name('logout');
 
 Route::get('/admin', function(){
-    $ProductModel = DB::table('products')->get();
-    return view('/Admin/Admin-Tables', ['product' => $ProductModel]);
+    return view('Admin/Admin-Dashbord');
 })->name('admin')->middleware('auth');
+
+Route::get('/product', function(){
+    $products = ProductModel::all();
+    return view('Admin/Admin-Tables', ['product' => $products]);
+})->name('product')->middleware('auth');

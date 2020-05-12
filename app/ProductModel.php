@@ -11,4 +11,5 @@ class ProductModel extends Model
 
     protected $table = 'products';
     protected $fillable = ['Name', 'Price', 'Stock'];
+    protected $dates = ['deleted_at'];
 }
