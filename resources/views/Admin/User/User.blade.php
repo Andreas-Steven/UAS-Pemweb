@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">User List</h1>
+            <h1 class="m-0 text-dark"></h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -19,7 +19,15 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="container"> 
+          <div class="container-fluid"> 
+
+                <div class="container-fluid"> {{--https://stackoverflow.com/questions/45673354/bootstrap-4-invalid-feedback-with-input-group-not-displaying--}}
+                  <div style="border-bottom: 1px solid black;">
+                      <p style="text-align: center;"> 
+                          <font size="7" color="black"> Daftar User </font>
+                      </p>
+                  </div>
+                </div>
 
                 <table id='doc' rule='all' class='table table-striped' style='width : 100%' >
                     <thead class='thead-dark'>
@@ -38,8 +46,18 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $Row->firstname }}</td>
                                 <td>{{ $Row->lastname }}</td> 
-                                <td>{{ $Row->gender }}</td>
-                                <td>{{ $Row->role }}</td>
+                                {{--<td>{{ $user->gender }}</td>--}}
+                                @if($Row->gender == 'male')         
+                                     <td>Male</td>         
+                                @else
+                                    <td>Female</td>        
+                                @endif
+                                {{--<td>{{ $Row->role }}</td>--}}
+                                @if($Row->role == 'admin')         
+                                     <td>Admin</td>         
+                                @else
+                                    <td>Customer</td>        
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

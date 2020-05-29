@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 
 use App\ProductModel;
+use App\TransactionsModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,9 +46,7 @@ Route::get('/home', function(){
 
 Route::get('/logout','AuthController@logout')->middleware('auth')->name('logout');
 
-Route::get('/admin', function(){
-    return view('Admin/Admin-Dashbord');
-})->name('admin')->middleware('auth');
+Route::get('/admin', 'TransactionsController@index')->name('admin')->middleware('auth');
 
 Route::get('/product', function(){
     $products = ProductModel::all();

@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 
 use App\ProductModel;
+use File;
 
 class MainController extends Controller
 {
@@ -57,17 +58,26 @@ class MainController extends Controller
         $request->validate([
             'name' => 'required',
             'harga' => 'required|integer',
-            'stock' => 'required|integer|min:0'
+            'stock' => 'required|integer|min:0',
+            'descriptions' => 'required',
+            'file' => 'required'
         ]);
 
         $products = new ProductModel;
         $products->Name = $request->name;
         $products->Price = $request->harga;
         $products->Stock = $request->stock;
+        $products->Descriptions = $request->descriptions;
+
+        $file = $request->file('file'); // https://www.malasngoding.com/membuat-upload-file-laravel/
+        $tujuan_upload = 'FotoProduk';
+        $file->move($tujuan_upload, $file->getClientOriginalName());
+        $FileName = $file->getClientOriginalName();
+        $products->Image = $FileName;
 
         $products->save();
 
-        return redirect('/admin');
+        return redirect()->route('product')->with('status', 'Data Berhasil Ditambah!');
     }
 
     /**
@@ -90,13 +100,45 @@ class MainController extends Controller
      */
     public function update(Request $request, $id)
     {
-        ProductModel::where('ID', $id)->update([
-            'Name' => $request->name,
-            'Price' => $request->harga,
-            'Stock' => $request->stock
+        $request->validate([
+            'name' => 'required',
+            'harga' => 'required|integer',
+            'stock' => 'required|integer|min:0',
+            'descriptions' => 'required'
         ]);
 
-        return redirect('/admin')->with('status', 'Data Berhasil Diubah!');
+        $OldFileName = $request->post('OldPhoto');
+        echo "Nama Foto Lama: " . $OldFileName;
+        
+        if($request->hasFile('file'))
+        {
+            $file = $request->file('file');
+            $tujuan_upload = 'FotoProduk';
+            $file->move($tujuan_upload, $file->getClientOriginalName());
+            $FileName = $file->getClientOriginalName();
+            echo "Nama Foto Baru: " . $FileName;
+            File::delete('FotoProduk/'.$OldFileName); //https://www.malasngoding.com/hapus-file-dengan-laravel/
+            
+            ProductModel::where('ID', $id)->update([
+                'Name' => $request->name,
+                'Price' => $request->harga,
+                'Stock' => $request->stock,
+                'Descriptions' => $request->descriptions,
+                'Image' => $FileName
+            ]);
+        }
+        else
+        {
+             ProductModel::where('ID', $id)->update([
+                'Name' => $request->name,
+                'Price' => $request->harga,
+                'Stock' => $request->stock,
+                'Descriptions' => $request->descriptions,
+                'Image' => $OldFileName
+            ]);
+        }
+
+        return redirect()->route('product')->with('status', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -107,18 +149,8 @@ class MainController extends Controller
      */
     public function destroy($id) // https://stackoverflow.com/questions/35402228/write-custom-query-in-laravel-5
     {
-        //DB::table('products')->where('ID', '=', $product->IDphp )->delete();
-        //DB::statement('ALTER TABLE `products` AUTO_INCREMENT = 0');
+        $del = ProductModel::where('ID', $id)->delete();
 
-        $song = ProductModel::where('ID', $id)->delete();
-
-        return redirect('/admin');
-
-        // SOFT DELETE GAK BISA -_-
-        //ProductModel::destroy($product->ID);
-        //$product = ProductModel::find($product->ID);
-        //$product->delete();
-
-        //return redirect('/admin');
+        return redirect()->route('product');
     }
 }

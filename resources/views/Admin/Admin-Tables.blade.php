@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Product List</h1>
+            <h1 class="m-0 text-dark"></h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -19,7 +19,17 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="container">
+          <div class="container-fluid">
+
+                <div class="container-fluid"> {{--https://stackoverflow.com/questions/45673354/bootstrap-4-invalid-feedback-with-input-group-not-displaying--}}
+                  <div style="border-bottom: 1px solid black;">
+                      <p style="text-align: center;"> 
+                          <font size="7" color="black"> Daftar Produk </font>
+                      </p>
+                  </div>
+                </div>
+
+                <br>
 
                 <a href="{{ url('/Add') }}" style="float:right;margin-right: 15px;">
                     <button class="btn btn-primary"> 
@@ -37,6 +47,8 @@
                             <th><strong>Nama Produk</th>
                             <th><strong>Harga</th>
                             <th><strong>Stock</th>
+                            <th><strong>Descriptions</th>
+                            <th><strong>Image</th>
                             <th><strong>Actions</th>
                         </tr>
                     </thead>
@@ -48,6 +60,8 @@
                                 <td>{{ $Row->Name }}</td>
                                 <td>Rp @IDR($Row->Price)</td> 
                                 <td>{{ $Row->Stock }}</td>
+                                <td>{{ $Row->Descriptions }}</td>
+                                <td><img width="150px" src="{{ url('FotoProduk/' . $Row->Image) }}"></td>
                                 <td>
                                     <table>
                                         <tr>

@@ -23,6 +23,7 @@ class CreateTableUsers extends Migration
             $table->string('role')->default($value = 'customer');
             $table->date('birthday');
             $table->string('gender');
+            $table->string('picture')->default($value = 'NoPic.jpg');;
             $table->rememberToken();
             $table->timestamps();
         });
