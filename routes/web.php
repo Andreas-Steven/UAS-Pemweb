@@ -41,9 +41,10 @@ Route::get('/login','AuthController@getLogin')->middleware('guest')->name('login
 Route::post('/login','AuthController@postLogin')->middleware('guest');
 
 Route::get('/home', function(){
-    $products = ProductModel::all();
+    $products = ProductModel::paginate();
     return view('/Home/Home', ['product' => $products]);
 })->name('home')->middleware('auth');
+Route::get('/home/search','AuthController@search')->middleware('auth');
 
 Route::get('/logout','AuthController@logout')->middleware('auth')->name('logout');
 
