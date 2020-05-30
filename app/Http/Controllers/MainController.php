@@ -153,4 +153,11 @@ class MainController extends Controller
 
         return redirect()->route('product');
     }
+
+    public function show(ProductModel $product)
+    {
+        
+
+        return $product;
+    }
 }

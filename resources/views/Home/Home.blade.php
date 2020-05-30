@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-12 text-center">
         <div class="section-title">
             <h2 class="title2">New Products</h2>
             <div class="section-nav">
@@ -48,187 +48,25 @@
     </div>
 
     <!-- Products tab & slick -->
-    <div class="col-md-12">
-        <div class="row">
-            <div class="products-tabs">
-                <!-- tab -->
-                <div id="tab1" class="tab-pane active">
-                    <div class="slick-slider" data-nav="#slick-nav-1">
-                        {{-- MASUKIN FOREACH DARI DATABASE --}}
-                        <!-- product -->
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="https://www.itgaleri.com/wp-content/uploads/2019/07/Asus-ROG-Strix-G531GD-2.jpg" alt="" width="300" height="300">
-                                <div class="product-label">
-                                    <span class="new">NEW</span>
-                                </div>
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Notebook</p>
-                                <h3 class="product-name"><a href="#">ASUS ROG Strix G531GT-I765G1T</a></h3>
-                                <h4 class="product-price">RP 15.999.000 <del class="product-old-price">RP 16.999.000</del></h4>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
+    <div class="col-md-12">  
+        <!-- product -->
+        
+        @foreach ($product as $Row)
+            <div class="row" style="display: flex; justify-content: center;">
+                <div class='col-md-3 border border-dark' align="center" style="margin-right:10px; margin-bottom: 10px;">
+                    <div class='team-block bottom'>
+                        <div class="product-img">
+                            <img src="{{ url('FotoProduk/' . $Row->Image) }}" alt="" width="200" height="200">
                         </div>
-                        <!-- /product -->
-
-                        <!-- product -->
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="https://www.itgaleri.com/wp-content/uploads/2019/07/Asus-ROG-Strix-G531GD-2.jpg" alt="" width="300" height="300">
-                                <div class="product-label">
-                                    <span class="new">NEW</span>
-                                </div>
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Notebook</p>
-                                <h3 class="product-name"><a href="#">ASUS ROG Strix G531GT-I765G1T</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
+                        <div class='team-content'>
+                            <h3 class="product-name"><a href="/product/{{ $Row->ID }}">{{ $Row->Name }}</a></h3>
+                            <h4 class="product-price">Rp @IDR($Row->Price)</h4>
                         </div>
-                        <!-- /product -->
-
-                        <!-- product -->
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="https://www.itgaleri.com/wp-content/uploads/2019/07/Asus-ROG-Strix-G531GD-2.jpg" alt="" width="300" height="300">
-                                <div class="product-label">
-                                    <span class="new">NEW</span>
-                                </div>
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Notebook</p>
-                                <h3 class="product-name"><a href="#">ASUS ROG Strix G531GT-I765G1T</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                        <!-- /product -->
-
-                        <!-- product -->
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="https://www.itgaleri.com/wp-content/uploads/2019/07/Asus-ROG-Strix-G531GD-2.jpg" alt="" width="300" height="300">
-                                <div class="product-label">
-                                    <span class="new">NEW</span>
-                                </div>
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Notebook</p>
-                                <h3 class="product-name"><a href="#">ASUS ROG Strix G531GT-I765G1T</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                        <!-- /product -->
                     </div>
-                    <div id="slick-nav-1" class="products-slick-nav"></div>
                 </div>
-                <!-- /tab -->
             </div>
-        </div>
+        @endforeach
+        
+        <!-- product -->
     </div>
-    <!-- Products tab & slick -->
-
-    {{--<div class="col-md-4 col-xs-6">
-        <div class="section-title">
-            <h4 class="title2">Top selling</h4>
-            <div class="section-nav">
-                <div id="slick-nav-4" class="products-slick-nav"></div>
-            </div>
-        </div>
-
-        <div class="products-widget-slick" data-nav="#slick-nav-4">
-            <div>
-                <!-- product widget -->
-                <div class="product-widget">
-                    <div class="product-img">
-                        <img src="./img/product04.png" alt="">
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    </div>
-                </div>
-                <!-- /product widget -->
-
-                <!-- product widget -->
-                <div class="product-widget">
-                    <div class="product-img">
-                        <img src="./img/product05.png" alt="">
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    </div>
-                </div>
-                <!-- /product widget -->
-
-                <!-- product widget -->
-                <div class="product-widget">
-                    <div class="product-img">
-                        <img src="./img/product06.png" alt="">
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    </div>
-                </div>
-                <!-- product widget -->
-            </div>
-
-            <div>
-                <!-- product widget -->
-                <div class="product-widget">
-                    <div class="product-img">
-                        <img src="./img/product07.png" alt="">
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    </div>
-                </div>
-                <!-- /product widget -->
-
-                <!-- product widget -->
-                <div class="product-widget">
-                    <div class="product-img">
-                        <img src="./img/product08.png" alt="">
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    </div>
-                </div>
-                <!-- /product widget -->
-
-                <!-- product widget -->
-                <div class="product-widget">
-                    <div class="product-img">
-                        <img src="./img/product09.png" alt="">
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    </div>
-                </div>
-                <!-- product widget -->
-            </div>
-        </div>
-    </div>--}}
 @stop

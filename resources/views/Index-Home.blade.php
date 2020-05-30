@@ -18,6 +18,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/font-awesome.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/slick.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/slick-theme.css') }}">
+        <link href="{{ asset('/sesoul/style.css') }}" rel="stylesheet">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">

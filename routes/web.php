@@ -41,7 +41,8 @@ Route::get('/login','AuthController@getLogin')->middleware('guest')->name('login
 Route::post('/login','AuthController@postLogin')->middleware('guest');
 
 Route::get('/home', function(){
-    return view('/Home/Home');
+    $products = ProductModel::all();
+    return view('/Home/Home', ['product' => $products]);
 })->name('home')->middleware('auth');
 
 Route::get('/logout','AuthController@logout')->middleware('auth')->name('logout');
@@ -52,3 +53,5 @@ Route::get('/product', function(){
     $products = ProductModel::all();
     return view('Admin/Admin-Tables', ['product' => $products]);
 })->name('product')->middleware('auth');
+
+Route::get('/product/{product}', 'MainController@show');
