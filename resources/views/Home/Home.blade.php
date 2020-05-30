@@ -38,6 +38,9 @@
             </div>
         </div>
     </div>
+    
+       
+
 
     <div class="col-md-12 text-center">
         <div class="section-title">
@@ -66,6 +69,8 @@
                 </div>
             </div>
         @endforeach
+        <!-- Search Products -->
+        {{ $product->links() }}
         
         <!-- product -->
     </div>
