@@ -33,35 +33,28 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
-
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-
             .position-ref {
                 position: relative;
             }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
-
             .content {
                 text-align: center;
             }
-
             .title {
                 font-size: 84px;
             }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -71,11 +64,9 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
                 margin-bottom: 30px;
             }
-
         </style>
 
         <!--NAVBAR-->
@@ -98,9 +89,9 @@
                 </li>
                 </ul>
                 <div style="text-align:right">
-                    <form class="form-inline my-2 my-lg-0";>
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <form class="form-inline my-2 my-lg-0"; action="/home/search" method="GET">
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" value="{{ old('search') }}" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="SEARCH">Search</button>
                     </form>
                 </div>
                 <div class="top-right links">
@@ -119,7 +110,6 @@
                     <a href="{{route('logout') }}">Logout</a>
                 @else
                     <a href="{{ route('login') }}">Login</a>
-
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}">Register</a>
                     @endif
@@ -128,7 +118,7 @@
         @endif--}}
         
         @yield('content')
-
+        
 		<div class="clearfix visible-sm visible-xs"></div>
 
         <!-- Script -->
