@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Pagination\LengthAwarePaginatorsimplePaginateIlluminate\Pagination\Paginator;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -9,6 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 use App\ProductModel;
+
 
 class AuthController extends Controller
 {
@@ -65,6 +67,15 @@ class AuthController extends Controller
         \Auth::loginUsingId($user->id);
         return redirect()->route('home');
     }
+    public function search(Request $request)
+	{
+	
+		$search = $request->search;
+		$products = ProductModel::where('Name','like',"%".$search."%")->paginate();
+        
+		return view('/Home/Home',['product' => $products]);
+ 
+	}
     public function logout()
     {
         \Auth::logout();
