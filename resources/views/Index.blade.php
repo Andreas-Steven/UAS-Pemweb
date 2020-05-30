@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{--<!DOCTYPE html>
 <html>
 <head>
 	<title>
@@ -39,4 +39,4 @@
     @yield('content')
     
 </body>
-</html>
+</html>--}}
