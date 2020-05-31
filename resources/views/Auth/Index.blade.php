@@ -22,11 +22,11 @@
                 </div>
             </main>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
+                {{--<ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
+                </ol>--}}
                 <div class="carousel-inner" >
                     <div class="carousel-item active">
                         <img class="d-block w-100" src="https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/geforce-rtx-turing/social/geforce-rtx-20-series-social-2048x1024.jpg" alt="First slide" width="1000" height="400">
