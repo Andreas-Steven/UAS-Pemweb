@@ -1,0 +1,2 @@
+psql -h ec2-3-222-150-253.compute-1.amazonaws.com -d d8uo5l2g7gci1r -U yyiztjnxwupmos
+114f3c98ac8dc339bccae272ee8757c1ed143cbc8fe7a11ba3d26d70b13facaf
