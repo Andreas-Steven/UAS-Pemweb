@@ -48,23 +48,25 @@
                 </div>
             </div>
         </div>
-        
+        <hr>
         <!-- product -->
+        <div class="row" style="justify-content: center;">
         @foreach ($product as $Row)
-            <div class="row" style="display: flex; justify-content: center;">
-                <div class='col-md-3 border border-dark' align="center" style="margin-right:10px; margin-bottom: 10px;">
-                    <div class='team-block bottom'>
-                        <div class="product-img">
-                            <img src="{{ url('FotoProduk/' . $Row->Image) }}" alt="" width="200" height="200">
-                        </div>
-                        <div class='team-content'>
-                            <h3 class="product-name"><a href="/product/{{ $Row->ID }}">{{ $Row->Name }}</a></h3>
-                            <h4 class="product-price">Rp @IDR($Row->Price)</h4>
-                        </div>
+            
+            <div class='col-md-3 border border-dark' align="center" style="margin-right:10px; margin-bottom: 10px;">
+                <div class='team-block bottom'>
+                    <div class="product-img">
+                        <img src="{{ url('FotoProduk/' . $Row->Image) }}" alt="" width="200" height="200">
+                    </div>
+                    <div class='team-content'>
+                        <h3 class="product-name"><a href="/product/{{ $Row->ID }}">{{ $Row->Name }}</a></h3>
+                        <h4 class="product-price">Rp @IDR($Row->Price)</h4>
                     </div>
                 </div>
             </div>
+            
         @endforeach
+        </div>
         <!-- Search Products -->
         {{ $product->links() }}
         
