@@ -72,14 +72,14 @@ class AuthController extends Controller
     public function search(Request $request)
 	{
 	
-		/*$search = $request->search;
+		$search = $request->search;
 		$products = ProductModel::where('Name','like',"%".$search."%")->paginate();
         
-        return view('/Home/Home',['product' => $products]);*/
-
-        $search = strtolower($request->search);
-        $products = ProductModel::whereRaw('Name like (?)',["%{$search}%"])->paginate();
         return view('/Home/Home',['product' => $products]);
+
+        /*$search = strtolower($request->search);
+        $products = ProductModel::whereRaw('Name like (?)',["%{$search}%"])->paginate();
+        return view('/Home/Home',['product' => $products]);*/
  
 	}
     public function logout()
