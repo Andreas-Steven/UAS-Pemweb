@@ -76,11 +76,10 @@ class AuthController extends Controller
 		$products = ProductModel::where('Name','like',"%".$search."%")->paginate();
         
         return view('/Home/Home',['product' => $products]);*/
-        
-        $search = strtolower($request->search);$products = ProductModel::whereRaw('lower(Name) like (?)',["%{$search}%"])->paginate();
 
-      
-  return view('/Home/Home',['product' => $products]);
+        $search = strtolower($request->search);
+        $products = ProductModel::whereRaw('Name like (?)',["%{$search}%"])->paginate();
+        return view('/Home/Home',['product' => $products]);
  
 	}
     public function logout()
