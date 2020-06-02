@@ -10,7 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 use App\ProductModel;
-
+use Cookie;
 
 class AuthController extends Controller
 {
@@ -35,7 +35,8 @@ class AuthController extends Controller
             return redirect()->route('admin'); 
         }
         
-        return redirect()->route('home');     
+        $Session = \Auth::user()->id;
+        return redirect()->route('home')->withCookie(cookie('ID', $Session, 60));         
     }
     public function getRegister()
     {
@@ -51,7 +52,7 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
             'birthday' => 'required',
             'gender' => 'required',
-        ]);
+        ]); 
        
         $user = User::create([
             'firstname' => $request->firstname,
@@ -65,7 +66,8 @@ class AuthController extends Controller
         
         //user login
         \Auth::loginUsingId($user->id);
-        return redirect()->route('home');
+        $Session = \Auth::user()->id;
+        return redirect()->route('home')->withCookie(cookie('ID', $Session, 60));
     }
     public function search(Request $request)
 	{
@@ -79,6 +81,9 @@ class AuthController extends Controller
     public function logout()
     {
         \Auth::logout();
+        Cookie::queue(
+            Cookie::forget('ID')
+        );
 
         return redirect()->route('login');
     }

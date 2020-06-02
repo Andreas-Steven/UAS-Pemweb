@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\ProductModel;
 use File;
+use App\TransactionsModel;
 
 class MainController extends Controller
 {
@@ -156,8 +157,44 @@ class MainController extends Controller
 
     public function show(ProductModel $product)
     {
-        
+        return view('Home/ItemDetail', compact('product'));
+    }
 
-        return $product;
+    public function ItemDetail(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required|integer',
+            'user_id' => 'required|integer',
+            'nama' => 'required|string',
+            'harga' => 'required|integer',
+            'jumlah' => 'required|integer',
+            'foto' => 'required'
+        ]);
+
+        $Hitung = $request->harga * $request->jumlah;
+
+        return view('Home/OrderDetail', ['req' => $request, 'harga' => $Hitung]);
+    }
+
+    public function BeliBarang(Request $request)
+    {
+        $request->validate([
+            'productid' => 'required|integer',
+            'userid' => 'required|integer',
+            'nama' => 'required|string',
+            'totalharga' => 'required|integer',
+            'jumlah' => 'required|integer'
+        ]);
+
+        $Transaction = new TransactionsModel();
+        $Transaction->UserID = $request->userid;
+        $Transaction->ProductID = $request->productid;
+        $Transaction->ProductName = $request->nama;
+        $Transaction->PurchaseAmount = $request->jumlah;
+        $Transaction->TotalPrice = $request->totalharga;
+
+        $Transaction->save();
+
+        return redirect()->route('home')->with('status', 'Data Berhasil Ditambah!');
     }
 }

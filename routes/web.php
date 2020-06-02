@@ -56,3 +56,11 @@ Route::get('/product', function(){
 })->name('product')->middleware('auth');
 
 Route::get('/product/{product}', 'MainController@show');
+
+Route::get('/Profile/{user}', 'UserController@Profile')->name('ViewProfile');
+Route::get('Profile/{user}/Edit', 'UserController@edit');
+Route::patch('/UpdateProfile/{products}', 'UserController@update');
+
+Route::get('/History/{user}', 'TransactionsController@History');
+Route::post('/ItemDetail', 'MainController@ItemDetail');
+Route::post('/BeliBarang', 'MainController@BeliBarang');

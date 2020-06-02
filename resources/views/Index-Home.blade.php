@@ -79,13 +79,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item flex-row-reverse">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="/Profile/{{ Cookie::get('ID') }}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cart</a>
+                    <a class="nav-link" href="/History/{{ Cookie::get('ID') }}">Transaction History</a>
                 </li>
                 </ul>
                 <div style="text-align:right">

@@ -13,4 +13,8 @@ class ProductModel extends Model
     protected $primaryKey = 'ID';
     protected $fillable = ['Name', 'Price', 'Stock', 'Descriptions', 'Image'];
     protected $dates = ['deleted_at'];
+
+    public function transaction(){
+    	return $this->hasMany('App\TransactionsModel');
+    }
 }

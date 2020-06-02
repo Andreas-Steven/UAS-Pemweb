@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Charts\UserChart;
 
 use App\TransactionsModel;
+use App\User;
+use App\ProductModel;
 
 class TransactionsController extends Controller
 {
@@ -25,5 +27,12 @@ class TransactionsController extends Controller
         $usersChart->labels(['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'Septembar', 'Oktober', 'November', 'Desember']);
         $usersChart->dataset('Total Penjualan', 'bar', $data)->color("rgb(255, 99, 132)")->backgroundcolor("rgb(255, 99, 132)");;
         return view('Admin/Admin-Dashbord', [ 'usersChart' => $usersChart ] );
+    }
+
+    public function history(User $user)
+    {
+        $transactions = TransactionsModel::where('UserID', $user->id)->get();
+        //return $transactions;
+        return view('Transaction/Transaction', ['transaction' => $transactions]);
     }
 }
