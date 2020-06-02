@@ -67,7 +67,26 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            #footer{
+                width: 100%;
+                height:50px;
+                line-height: 50px;
+                background:#333;
+                color:#fff;
+                text-align: center;
+                margin-top: 10px;
+                bottom: 0px;
+                left: 0px;
+                position: fixed; 
+                bottom: 0px;
+            }
         </style>
+        <script>
+            var footerResize = function() {
+                $('#footer').css('position', $("body").height() + $("#footer").innerHeight() > $(window).height() ? "inherit" : "fixed");
+            };
+            $(window).resize(footerResize).ready(footerResize);
+        </script>   
 
         <!--NAVBAR-->
 
@@ -119,7 +138,12 @@
         
         @yield('content')
         
-		<div class="clearfix visible-sm visible-xs"></div>
+        <footer>
+            <div align="center" id="footer">
+                Copyright &copy; 2020
+                Designed by KIBAR Production
+            </div>
+        </footer>
 
         <!-- Script -->
         <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
